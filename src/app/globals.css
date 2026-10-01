@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colori brand */
+  --color-brand-bg-dark: #1a0b2e;
+  --color-brand-violet: #a855f7;
+  --color-brand-violet-light: #c084fc;
+  --color-brand-lilac: #ede9fe;
+  --color-brand-cyan: #22d3ee;
+  --color-brand-pink: #ec4899;
+  --color-brand-blue: #60a5fa;
+
+  /* Testo su sfondo chiaro */
+  --color-text-primary: #1a0b2e;
+  --color-text-secondary: #6b5b8a;
+  --color-text-muted: #9ca3af;
+
+  /* Sfondo */
+  --color-surface-bg: #fafafa;
+
+  /* Font */
+  --font-sans: var(--font-sans), system-ui, sans-serif;
+  --font-serif: var(--font-serif), Georgia, serif;
+}
+
+html {
+  background-color: var(--color-surface-bg);
+}
+
+body {
+  background-color: var(--color-surface-bg);
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(168, 85, 247, 0.06), transparent 40%),
+    radial-gradient(circle at 85% 100%, rgba(34, 211, 238, 0.04), transparent 40%);
+  background-attachment: fixed;
+  color: var(--color-text-primary);
+  min-height: 100vh;
+}
+
+/* Utility: glass su sfondo chiaro */
+@utility glass-light {
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+}
+
+@utility glass-light-hover {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(168, 85, 247, 0.4);
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.15);
+}
+
+/* Glow tenui */
+@utility glow-violet {
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.25);
+}
+
+@utility glow-violet-strong {
+  box-shadow: 0 0 18px rgba(168, 85, 247, 0.4);
+}
+
+@utility glow-cyan {
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.3);
+}
+
+/* Hover button: glow + scale leggero */
+@utility hover-glow {
+  transition: all 0.2s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.35);
+  transform: scale(1.01);
+}

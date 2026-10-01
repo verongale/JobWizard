@@ -1,0 +1,17 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: jobwizard-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: jobwizard
+      POSTGRES_PASSWORD: jobwizard_dev_2026
+      POSTGRES_DB: jobwizard
+    ports:
+      - "5432:5432"
+    volumes:
+      - jobwizard_pgdata:/var/lib/postgresql/data
+    mem_limit: 512m
+
+volumes:
+  jobwizard_pgdata:

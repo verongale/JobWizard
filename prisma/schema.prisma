@@ -1,0 +1,40 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ApplicationStatus {
+  DA_CONTATTARE
+  CONTATTATO
+  COLLOQUIO
+  RIFIUTATO
+  ASSUNTO
+  SCARTATO_DA_ME
+}
+
+model Company {
+  id             String             @id @default(cuid())
+  placeId        String?            @unique
+  name           String
+  address        String?
+  city           String?
+  website        String?
+  email          String?
+  phone          String?
+  status         ApplicationStatus  @default(DA_CONTATTARE)
+  notes          String?
+  score          Int                @default(0)
+  scanResult     Json?
+  inKanban       Boolean            @default(false)
+  createdAt      DateTime           @default(now())
+  updatedAt      DateTime           @updatedAt
+  lastScannedAt  DateTime?
+}
